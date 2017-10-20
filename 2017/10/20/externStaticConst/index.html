@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        Hexo创建及相关指令 · knoledge-iOS
+        externStaticConst · knoledge-iOS
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -63,7 +63,7 @@
                 <a href="/" >LLStudy&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Hexo创建及相关指令</a>
+                <a href="#" class="post-name">externStaticConst</a>
             </div>
     </div>
     
@@ -84,7 +84,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Hexo创建及相关指令
+            externStaticConst
             <!-- 404 -->
             
         </h1>
@@ -102,7 +102,7 @@
             
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2017/10/17</span>
+                <span class="post-intro-time">2017/10/20</span>
             </div>
         
     </div>
@@ -145,28 +145,36 @@
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>!官网<br>Hexo<a href="https://hexo.io/docs/" target="_blank" rel="external">文档</a> 文档<br>Hexo<a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">问题解决</a><br>Hexo <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.问题</p>
-<p>##Hexo begin</p>
-<h3 id="创建一个项目文件"><a href="#创建一个项目文件" class="headerlink" title="创建一个项目文件"></a>创建一个项目文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>更多信息: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>更多信息: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>更多信息: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="部署到网站"><a href="#部署到网站" class="headerlink" title="部署到网站"></a>部署到网站</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>更多信息: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="static-const和extern"><a href="#static-const和extern" class="headerlink" title="static,const和extern"></a>static,const和extern</h1><p>过程中学到的相关知识点:<br>@(<ideas>)[ iOS定义静态变量、静态常量、全局变量]</ideas></p>
+<p>参考相关博客<br><a href="http://www.jianshu.com/p/aec2e85b9e84" target="_blank" rel="external">变量</a></p>
+<p><strong>静态变量</strong></p>
+<blockquote>
+<p>作用域     不仅仅是作用域某个类的某个对象,而是作用域整个类的时候，这时候就可以使用静态变量。</p>
+</blockquote>
+<p><strong>static</strong></p>
+<blockquote>
+<p>在C和Java中用static关键之声明,可以用类名.变量使用<br>但是在OC中在程序启动时,只执行一次</p>
+</blockquote>
+<p><strong>静态常量const</strong></p>
+<blockquote>
+<p>几种常见的写法:<br>变量:<br>static const NSTimerInterval timeDuration = 0.5<br>对象:<br>static NSString const <em> lmjName = @’’lmjName”;<br>static const NSString </em> lmjName2 = @”lmjName2”;<br>这两个对象还是可以修改的,const 修饰的是<em>LMJName,指的意思是内存地址不变的<br><code>正确写法</code><br>static NSString </em> const LMJName = @”lmjName”;<br>不可以修改</p>
+</blockquote>
+<p><strong>全局变量extern</strong></p>
+<blockquote>
+<p>全局变量只能被初始化一次<br><code>一个全局变量</code><br>extern NSString * lmjName = @”OC;</p>
+</blockquote>
 
     </article>
     <!-- 前后页  -->
     <ul class="post-pager">
         
-            <li class="next">
-                <a href= "/2017/10/20/externStaticConst/" title= externStaticConst >
-                    <span>Next Post</span>
-                    <span>externStaticConst</span>
+        
+            <li class="previous">
+                <a href= "/2017/10/17/hello-world/" title= Hexo创建及相关指令 >
+                    <span>Previous Post</span>
+                    <span>Hexo创建及相关指令</span>
                 </a>
             </li>
-        
         
     </ul>
     <!-- 评论插件 -->
@@ -227,7 +235,7 @@
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个项目文件"><span class="toc-number">1.</span> <span class="toc-text">创建一个项目文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行"><span class="toc-number">2.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成静态文件"><span class="toc-number">3.</span> <span class="toc-text">生成静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署到网站"><span class="toc-number">4.</span> <span class="toc-text">部署到网站</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#static-const和extern"><span class="toc-number">1.</span> <span class="toc-text">static,const和extern</span></a></li></ol>
     </div>
     
     <div class="back-top">&#xe639;</div>
