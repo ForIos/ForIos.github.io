@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        knoledge-iOS
+        Objective-C Model · knoledge-iOS
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -50,11 +50,22 @@
     
 </head>
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >LLStudy&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Objective-C Model</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>LLStudy's Studio.</a>
 </header>
@@ -62,20 +73,37 @@
         <div class="site-intro">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            Objective-C Model
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+        </p>
+        <!-- 404 -->
+        
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2017/11/14</span>
+            </div>
         
     </div>
 </div>
@@ -115,102 +143,35 @@
             });
         </script>
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/14/Objective-C-Model/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>Objective-C Model</span>
-                    </h2>
-                <div class="abstract-content">
-                    原博客地址:雷大神 Objective-C 对象模型
-Objective-C 对象模型
-Objective-C 对象模型是基于类建立的。在苹果开源库中 runtime中有Objective-C 对象模型的实现细节。
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>原博客地址:<a href="http://blog.leichunfeng.com/blog/2015/04/25/objective-c-object-model/" target="_blank" rel="external">雷大神 Objective-C 对象模型</a></p>
+<h1 id="Objective-C-对象模型"><a href="#Objective-C-对象模型" class="headerlink" title="Objective-C 对象模型"></a>Objective-C 对象模型</h1><hr>
+<p>Objective-C 对象模型是基于类建立的。在苹果开源库中 <a href="https://opensource.apple.com/tarballs/objc4/" target="_blank" rel="external">runtime</a>中有Objective-C 对象模型的实现细节。</p>
+<hr>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><hr>
 
-对象
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+        
+            <li class="previous">
+                <a href= "/2017/10/20/externStaticConst/" title= externStaticConst >
+                    <span>Previous Post</span>
+                    <span>externStaticConst</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
 
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/14</span>
-                </div>
-            </div>
-        </article>
+<!-- City版安装代码已完成 -->
     
     
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/20/externStaticConst/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>externStaticConst</span>
-                    </h2>
-                <div class="abstract-content">
-                    static,const和extern过程中学到的相关知识点:@()[ iOS定义静态变量、静态常量、全局变量]
-参考相关博客变量
-静态变量
+    <!--PC版-->
 
-作用域     不仅仅是作用域某个类的某个对象,而是作用域整个类的时候，这时候就可以使用静态变量。
-
-static
-
-在C和Java中用static关键之声明,可以用类名.变量使用但是在OC中在程序启动时,只执行一次
-
-静态常量const
-
-几种常见的写法:变量:static const NSTimerInterval timeDuration = 0.5对象:static NSString const  lmjName = @’’lmjName...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/20</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/17/hello-world/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>Hexo创建及相关指令</span>
-                    </h2>
-                <div class="abstract-content">
-                    Hexo!官网Hexo文档 文档Hexo问题解决Hexo GitHub.问题
-##Hexo begin
-创建一个项目文件1$ hexo new "My New Post"
-更多信息: Writing
-运行1$ hexo server
-更多信息: Server
-生成静态文件1$ hexo generate
-更多信息: Generating
-部署到网站1$ hexo deploy
-更多信息: Deployment
-
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/17</span>
-                </div>
-            </div>
-        </article>
-    
-    <!-- paginator  -->
     
 </main>
             <!-- profile -->
@@ -256,6 +217,13 @@ static
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper">
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Objective-C-对象模型"><span class="toc-number">1.</span> <span class="toc-text">Objective-C 对象模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对象"><span class="toc-number">1.0.1.</span> <span class="toc-text">对象</span></a></li></ol></li></ol></li></ol>
+    </div>
     
     <div class="back-top">&#xe639;</div>
     <div class="sidebar">
