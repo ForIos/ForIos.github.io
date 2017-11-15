@@ -151,7 +151,32 @@
 <p>Objective-C 对象模型是基于类建立的。在苹果开源库中 <a href="https://opensource.apple.com/tarballs/objc4/" target="_blank" rel="external">runtime</a>中有Objective-C 对象模型的实现细节。</p>
 </blockquote>
 <hr>
-<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><hr>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><hr>
+<blockquote>
+<p>在Objective-C ,每一个对象都是某个类的实例,且这个对象的isa指针指向它所属的类</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>打开刚下载的runtime工程,在objc-private.h中127行,可以找到对Objective-C中的对象定义struct objc_object。 Objective-C  其实就是这个结构体对象,isa为唯一私有成员变量。</p>
+</blockquote>
+<p><img src="./objc_object_1 .jpg" alt="Alt text"></p>
+<blockquote>
+<p>在同一个文件的51-52行, 可以找到Class 和 id 类型的定义,分别是struct objc_class 和 struct objc_object 类型的指针。<strong>为什么id类型可以指向任何对象。</strong>因为objc_class : objc_object 。 其中objc_class 就是Objective-C中类的定义</p>
+</blockquote>
+<p><img src="./2222222.png" alt="Alt text"></p>
+<hr>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><blockquote>
+<p><strong>1.对象的类描述了对象的数据:</strong><br>(1)内存大小<br>(2)成员变量的类型<br>(3)对象的布局<br><strong>2.对象的行为:</strong><br>(1)对象的响应消息<br>(2)实现的实例方法</p>
+</blockquote>
+<p>[receiver message];==&gt;isa-&gt;Method(或者这个Method为父类的方法)</p>
+<blockquote>
+<p>在Objective-C 中有两个根类(NSObject和NSProxy)<br><strong>NSObject:</strong><br>可以在文件NSObject.h中有一个成员变量,继承NSObject的都会有这个成员变量。<br><img src="./nsobject22.jpg" alt="Alt text"><br><strong>NSProxy:</strong></p>
+</blockquote>
+<hr>
+<h3 id="元类"><a href="#元类" class="headerlink" title="元类"></a>元类</h3><blockquote>
+<p>Objective-C 中的类,也是对象  是某一个类的实例。这个类我们称为元类(metaclass)。<br>调用类方法,如[NSObject new] 其实就是 通过isa到元类中找是否存在该方法。<br>那元类也是对象吗？是的话那它又是什么类的实例呢？是的，没错，元类也是对象（元类对象），元类也是某个类的实例，这个类我们称之为根元类（root metaclass）。不过，有一点比较特殊，那就是所有的元类所属的类都是同一个根元类（当然根元类也是元类，所以它所属的类也是根元类，即它本身）。根元类指的就是根类的元类，具体来说就是根类 NSObject 对应的元类。</p>
+<p>因此，理论上我们也可以给元类发送消息，但是 Objective-C 倾向于隐藏元类，不想让大家知道元类的存在。元类是为了保持 Objective-C 对象模型在设计上的完整性而引入的，比如用来保存类方法等，它主要是用来给编译器使用的。</p>
+</blockquote>
 
     </article>
     <!-- 前后页  -->
@@ -224,7 +249,7 @@
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Objective-C-对象模型"><span class="toc-number">1.</span> <span class="toc-text">Objective-C 对象模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象"><span class="toc-number">1.1.</span> <span class="toc-text">对象</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Objective-C-对象模型"><span class="toc-number">1.</span> <span class="toc-text">Objective-C 对象模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对象"><span class="toc-number">1.0.1.</span> <span class="toc-text">对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类"><span class="toc-number">1.0.2.</span> <span class="toc-text">类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#元类"><span class="toc-number">1.0.3.</span> <span class="toc-text">元类</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top">&#xe639;</div>
@@ -238,8 +263,6 @@
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-archive">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
     
     
     
