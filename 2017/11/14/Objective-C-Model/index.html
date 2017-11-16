@@ -8,20 +8,20 @@
   
     <meta name="keywords" content="Mr Liu,'s Blog" />
   
-  <meta name="description" content="原博客地址:雷大神 Objective-C 对象模型 Objective-C 对象模型  Objective-C 对象模型是基于类建立的。在苹果开源库中 runtime中有Objective-C 对象模型的实现细节。   对象  在Objective-C ,每一个对象都是某个类的实例,且这个对象的isa指针指向它所属的类    打开刚下载的runtime工程,在objc-private.h中127">
+  <meta name="description" content="原博客地址:雷大神 Objective-C 对象模型 Objective-C 对象模型 Objective-C 对象模型是基于类建立的。在苹果开源库中 runtime中有Objective-C 对象模型的实现细节。   对象  在Objective-C ,每一个对象都是某个类的实例,且这个对象的isa指针指向它所属的类    打开刚下载的runtime工程,在objc-private.h中127行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Objective-C 对象模型">
 <meta property="og:url" content="http://yoursite.com/2017/11/14/Objective-C-Model/index.html">
 <meta property="og:site_name" content="LL">
-<meta property="og:description" content="原博客地址:雷大神 Objective-C 对象模型 Objective-C 对象模型  Objective-C 对象模型是基于类建立的。在苹果开源库中 runtime中有Objective-C 对象模型的实现细节。   对象  在Objective-C ,每一个对象都是某个类的实例,且这个对象的isa指针指向它所属的类    打开刚下载的runtime工程,在objc-private.h中127">
+<meta property="og:description" content="原博客地址:雷大神 Objective-C 对象模型 Objective-C 对象模型 Objective-C 对象模型是基于类建立的。在苹果开源库中 runtime中有Objective-C 对象模型的实现细节。   对象  在Objective-C ,每一个对象都是某个类的实例,且这个对象的isa指针指向它所属的类    打开刚下载的runtime工程,在objc-private.h中127行">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/objc_object_1%20.jpg?attname=&e=1510824137&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:795loVcFyVynTMOs-Q5BxgPMcZM">
 <meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/2222222.png?attname=&e=1510824044&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:m58QYy8BMkQadlg54GkGvRFsuSo">
 <meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/nsobject22.jpg?attname=&e=1510824086&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:Rx3VRln6EcV8dhIoT-Ug6b3H6SA">
-<meta property="og:updated_time" content="2017-11-16T08:28:32.711Z">
+<meta property="og:updated_time" content="2017-11-16T08:33:55.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C 对象模型">
-<meta name="twitter:description" content="原博客地址:雷大神 Objective-C 对象模型 Objective-C 对象模型  Objective-C 对象模型是基于类建立的。在苹果开源库中 runtime中有Objective-C 对象模型的实现细节。   对象  在Objective-C ,每一个对象都是某个类的实例,且这个对象的isa指针指向它所属的类    打开刚下载的runtime工程,在objc-private.h中127">
+<meta name="twitter:description" content="原博客地址:雷大神 Objective-C 对象模型 Objective-C 对象模型 Objective-C 对象模型是基于类建立的。在苹果开源库中 runtime中有Objective-C 对象模型的实现细节。   对象  在Objective-C ,每一个对象都是某个类的实例,且这个对象的isa指针指向它所属的类    打开刚下载的runtime工程,在objc-private.h中127行">
 <meta name="twitter:image" content="http://ozi3e5md5.bkt.clouddn.com/objc_object_1%20.jpg?attname=&e=1510824137&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:795loVcFyVynTMOs-Q5BxgPMcZM">
   
   
@@ -143,8 +143,7 @@
       
             
             <p>原博客地址:<a href="http://blog.leichunfeng.com/blog/2015/04/25/objective-c-object-model/" target="_blank" rel="external">雷大神 Objective-C 对象模型</a></p>
-<h1 id="Objective-C-对象模型"><a href="#Objective-C-对象模型" class="headerlink" title="Objective-C 对象模型"></a>Objective-C 对象模型</h1><hr>
-<blockquote>
+<h1 id="Objective-C-对象模型"><a href="#Objective-C-对象模型" class="headerlink" title="Objective-C 对象模型"></a>Objective-C 对象模型</h1><blockquote>
 <p>Objective-C 对象模型是基于类建立的。在苹果开源库中 <a href="https://opensource.apple.com/tarballs/objc4/" target="_blank" rel="external">runtime</a>中有Objective-C 对象模型的实现细节。</p>
 </blockquote>
 <hr>
@@ -177,7 +176,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2017年11月16日 16:28</p>
+        <p>最后更新： 2017年11月16日 16:33</p>
         <p>原始链接： <a class="post-url" href="/2017/11/14/Objective-C-Model/" title="Objective-C 对象模型">http://yoursite.com/2017/11/14/Objective-C-Model/</a></p>
         <footer>
             <a href="http://yoursite.com">
