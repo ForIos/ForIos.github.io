@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/load1.png?attname=&e=1510908389&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:_Vkc1RgheYAGzy5E43NlNR8YaNY">
 <meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/load2.png?attname=&e=1510908389&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:0WSkAHw3OCvP73DmO3TmWqV-czQ">
 <meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/load3.png?attname=&e=1510908389&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:sMMFhtzR1e9-QgvLJMeEWNZur-8">
-<meta property="og:updated_time" content="2017-11-17T07:53:14.886Z">
+<meta property="og:updated_time" content="2017-11-17T07:57:39.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C +load vs +initialize">
 <meta name="twitter:description" content="##Objective-C +load vs +initialize 雷纯锋大神博客原博客地址   上篇文章讲过的是Objective-C对象,在Objective-C中绝大部分的类都继承自NSObject类,在NSObject有两个特殊的类方法+load和initialize ,用于类的初始化。 1.子类、父类、分类中的相应方法什么时候会被调用？2.需不需要在子类的实现中显式地调用父类的实现？3">
@@ -159,7 +159,7 @@
 <blockquote>
 <p>在prepare_load_methods执行完之后,把所有满足+load方法调用条件的类和分类分别存放在全局变量<strong>loadable_classes </strong>和<strong>loadable_categories</strong>中。</p>
 <p>在类和分类的数组之后,接下来对他们的+load方法进行调用了。打开文件<strong>objc-loadmethod.m</strong>类,中的<strong>call_load_methods</strong>函数。<br><img src="http://ozi3e5md5.bkt.clouddn.com/load2.png?attname=&amp;e=1510908389&amp;token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:0WSkAHw3OCvP73DmO3TmWqV-czQ" alt="Alt text"><br>下面的这个方法,就是最后调用+load方法<br><img src="http://ozi3e5md5.bkt.clouddn.com/load3.png?attname=&amp;e=1510908389&amp;token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:sMMFhtzR1e9-QgvLJMeEWNZur-8" alt="Alt text"></p>
-<p>+load项目中常使用 配合runtime 中的 <strong>Method Swizzling</strong>,下片博客会讲</p>
+<p>+load项目中常使用 配合runtime 中的 <strong>Method Swizzling</strong>,下篇博客会讲</p>
 </blockquote>
 <hr>
 <h3 id="initialize"><a href="#initialize" class="headerlink" title="+initialize"></a>+initialize</h3><blockquote>
@@ -172,7 +172,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2017年11月17日 15:53</p>
+        <p>最后更新： 2017年11月17日 15:57</p>
         <p>原始链接： <a class="post-url" href="/2017/11/17/Objective-C-load-vs-initialize/" title="Objective-C +load vs +initialize">http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/</a></p>
         <footer>
             <a href="http://yoursite.com">
