@@ -3,25 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>LL</title>
+  <title>Objective-C 对象模型 | LL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Mr Liu,'s Blog" />
   
-  <meta name="description" content="—原博客地址:雷大神 Objective-C 对象模型 Objective-C 对象模型 Objective-C 对象模型是基于类建立的。在苹果开源库中 runtime中有Objective-C 对象模型的实现细节。  对象 在Objective-C ,每一个对象都是某个类的实例,且这个对象的isa指针指向它所属的类 打开刚下载的runtime工程,在objc-private.h中127行,可以找">
+  <meta name="description" content="原博客地址:雷大神 Objective-C 对象模型 Objective-C 对象模型 Objective-C 对象模型是基于类建立的。在苹果开源库中 runtime中有Objective-C 对象模型的实现细节。  对象 在Objective-C ,每一个对象都是某个类的实例,且这个对象的isa指针指向它所属的类 打开刚下载的runtime工程,在objc-private.h中127行,可以找到">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LL">
+<meta property="og:title" content="Objective-C 对象模型">
 <meta property="og:url" content="http://yoursite.com/2017/11/14/Objective-C-Model/index.html">
 <meta property="og:site_name" content="LL">
-<meta property="og:description" content="—原博客地址:雷大神 Objective-C 对象模型 Objective-C 对象模型 Objective-C 对象模型是基于类建立的。在苹果开源库中 runtime中有Objective-C 对象模型的实现细节。  对象 在Objective-C ,每一个对象都是某个类的实例,且这个对象的isa指针指向它所属的类 打开刚下载的runtime工程,在objc-private.h中127行,可以找">
+<meta property="og:description" content="原博客地址:雷大神 Objective-C 对象模型 Objective-C 对象模型 Objective-C 对象模型是基于类建立的。在苹果开源库中 runtime中有Objective-C 对象模型的实现细节。  对象 在Objective-C ,每一个对象都是某个类的实例,且这个对象的isa指针指向它所属的类 打开刚下载的runtime工程,在objc-private.h中127行,可以找到">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/objc_object_1%20.jpg?attname=&e=1510824137&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:795loVcFyVynTMOs-Q5BxgPMcZM">
 <meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/2222222.png?attname=&e=1510824044&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:m58QYy8BMkQadlg54GkGvRFsuSo">
 <meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/nsobject22.jpg?attname=&e=1510824086&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:Rx3VRln6EcV8dhIoT-Ug6b3H6SA">
-<meta property="og:updated_time" content="2017-11-17T02:37:04.171Z">
+<meta property="og:updated_time" content="2017-11-17T02:41:16.486Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LL">
-<meta name="twitter:description" content="—原博客地址:雷大神 Objective-C 对象模型 Objective-C 对象模型 Objective-C 对象模型是基于类建立的。在苹果开源库中 runtime中有Objective-C 对象模型的实现细节。  对象 在Objective-C ,每一个对象都是某个类的实例,且这个对象的isa指针指向它所属的类 打开刚下载的runtime工程,在objc-private.h中127行,可以找">
+<meta name="twitter:title" content="Objective-C 对象模型">
+<meta name="twitter:description" content="原博客地址:雷大神 Objective-C 对象模型 Objective-C 对象模型 Objective-C 对象模型是基于类建立的。在苹果开源库中 runtime中有Objective-C 对象模型的实现细节。  对象 在Objective-C ,每一个对象都是某个类的实例,且这个对象的isa指针指向它所属的类 打开刚下载的runtime工程,在objc-private.h中127行,可以找到">
 <meta name="twitter:image" content="http://ozi3e5md5.bkt.clouddn.com/objc_object_1%20.jpg?attname=&e=1510824137&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:795loVcFyVynTMOs-Q5BxgPMcZM">
   
   
@@ -116,10 +116,33 @@
         <section id="main" class="body-wrap"><article id="post-Objective-C-Model" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Objective-C 对象模型
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-11-14
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h2 id="—"><a href="#—" class="headerlink" title="—"></a>—</h2><p>原博客地址:<a href="http://blog.leichunfeng.com/blog/2015/04/25/objective-c-object-model/" target="_blank" rel="external">雷大神 Objective-C 对象模型</a></p>
+            <p>原博客地址:<a href="http://blog.leichunfeng.com/blog/2015/04/25/objective-c-object-model/" target="_blank" rel="external">雷大神 Objective-C 对象模型</a></p>
 <h1 id="Objective-C-对象模型"><a href="#Objective-C-对象模型" class="headerlink" title="Objective-C 对象模型"></a>Objective-C 对象模型</h1><blockquote>
 <p>Objective-C 对象模型是基于类建立的。在苹果开源库中 <a href="https://opensource.apple.com/tarballs/objc4/" target="_blank" rel="external">runtime</a>中有Objective-C 对象模型的实现细节。</p>
 </blockquote>
@@ -146,8 +169,8 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2017年11月17日 10:37</p>
-        <p>原始链接： <a class="post-url" href="/2017/11/14/Objective-C-Model/" title="">http://yoursite.com/2017/11/14/Objective-C-Model/</a></p>
+        <p>最后更新： 2017年11月17日 10:41</p>
+        <p>原始链接： <a class="post-url" href="/2017/11/14/Objective-C-Model/" title="Objective-C 对象模型">http://yoursite.com/2017/11/14/Objective-C-Model/</a></p>
         <footer>
             <a href="http://yoursite.com">
                 <img src="/images/logo.png" alt="Mr Liu">
@@ -169,7 +192,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/11/14/Objective-C-Model/&title=LL&pic=http://yoursite.comimages/logo.png" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/11/14/Objective-C-Model/&title=《Objective-C 对象模型》 — LL&pic=http://yoursite.comimages/logo.png" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -179,7 +202,7 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/11/14/Objective-C-Model/&title=LL&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/11/14/Objective-C-Model/&title=《Objective-C 对象模型》 — LL&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
@@ -189,7 +212,7 @@
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=LL&url=http://yoursite.com/2017/11/14/Objective-C-Model/&via=http://yoursite.com" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Objective-C 对象模型》 — LL&url=http://yoursite.com/2017/11/14/Objective-C-Model/&via=http://yoursite.com" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
@@ -222,7 +245,7 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#—"><span class="post-toc-text">—</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Objective-C-对象模型"><span class="post-toc-text">Objective-C 对象模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对象"><span class="post-toc-text">对象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#类"><span class="post-toc-text">类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#元类"><span class="post-toc-text">元类</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Objective-C-对象模型"><span class="post-toc-text">Objective-C 对象模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对象"><span class="post-toc-text">对象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#类"><span class="post-toc-text">类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#元类"><span class="post-toc-text">元类</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
     
