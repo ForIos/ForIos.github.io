@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Objective-C +load vs +initialize | LL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Liu,'s Blog" />
+  
+  <meta name="description" content="##Objective-C +load vs +initialize 雷纯锋大神博客原博客地址   上篇文章讲过的是Objective-C对象,在Objective-C中绝大部分的类都继承自NSObject类,在NSObject有两个特殊的类方法+load和initialize ,用于类的初始化。 1.子类、父类、分类中的相应方法什么时候会被调用？2.需不需要在子类的实现中显式地调用父类的实现？3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Objective-C +load vs +initialize">
+<meta property="og:url" content="http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/index.html">
+<meta property="og:site_name" content="LL">
+<meta property="og:description" content="##Objective-C +load vs +initialize 雷纯锋大神博客原博客地址   上篇文章讲过的是Objective-C对象,在Objective-C中绝大部分的类都继承自NSObject类,在NSObject有两个特殊的类方法+load和initialize ,用于类的初始化。 1.子类、父类、分类中的相应方法什么时候会被调用？2.需不需要在子类的实现中显式地调用父类的实现？3">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/load1.png?attname=&e=1510908389&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:_Vkc1RgheYAGzy5E43NlNR8YaNY">
+<meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/load2.png?attname=&e=1510908389&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:0WSkAHw3OCvP73DmO3TmWqV-czQ">
+<meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/load3.png?attname=&e=1510908389&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:sMMFhtzR1e9-QgvLJMeEWNZur-8">
+<meta property="og:updated_time" content="2017-11-17T07:57:39.857Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Objective-C +load vs +initialize">
+<meta name="twitter:description" content="##Objective-C +load vs +initialize 雷纯锋大神博客原博客地址   上篇文章讲过的是Objective-C对象,在Objective-C中绝大部分的类都继承自NSObject类,在NSObject有两个特殊的类方法+load和initialize ,用于类的初始化。 1.子类、父类、分类中的相应方法什么时候会被调用？2.需不需要在子类的实现中显式地调用父类的实现？3">
+<meta name="twitter:image" content="http://ozi3e5md5.bkt.clouddn.com/load1.png?attname=&e=1510908389&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:_Vkc1RgheYAGzy5E43NlNR8YaNY">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Mr Liu,&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Mr Liu,&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个有梦想的产品汪
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//forios.github.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/ForIos">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Objective-C-load-vs-initialize" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Objective-C +load vs +initialize
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-11-17
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>##Objective-C +load vs +initialize</p>
+<p><a href="http://blog.leichunfeng.com/blog/2015/05/02/objective-c-plus-load-vs-plus-initialize/" target="_blank" rel="external">雷纯锋大神博客</a><br><a href="http://www.jianshu.com/p/9368ce9bb8f9" target="_blank" rel="external">原博客地址</a></p>
+<hr>
+<blockquote>
+<p>上篇文章讲过的是Objective-C对象,在Objective-C中绝大部分的类都继承自NSObject类,在NSObject有两个特殊的类方法+load和initialize ,用于类的初始化。</p>
+<p>1.子类、父类、分类中的相应方法什么时候会被调用？<br>2.需不需要在子类的实现中显式地调用父类的实现？<br>3.每个方法到底会被调用多少次</p>
+</blockquote>
+<p>可以先下载<a href="https://opensource.apple.com/tarballs/objc4/" target="_blank" rel="external">runtime</a>源码看下</p>
+<hr>
+<h3 id="load"><a href="#load" class="headerlink" title="+load"></a>+load</h3><blockquote>
+<p>+load方法当类或分类添加到Objective-C runtime时(也就是在程序运行了,调用了该类),+load方法可以在类加载的时候执行一些行为。<br><strong>继承</strong><br>子类的+load会在他所有父类的方法执行完成之后,才执行<br><strong>分类</strong><br>分类的+load方法会在主类的+load方法执行之后<br>(不同类之间的调用顺序不确定)</p>
+</blockquote>
+<p><strong>看看与 +load 方法相关的几个关键函数</strong>,在runtime功能中,<strong>objc-runtime-new.mm</strong>文件中的<strong>prepare_load_methods(header_info *hi)</strong></p>
+<p><img src="http://ozi3e5md5.bkt.clouddn.com/load1.png?attname=&amp;e=1510908389&amp;token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:_Vkc1RgheYAGzy5E43NlNR8YaNY" alt="Alt text"></p>
+<blockquote>
+<p>在prepare_load_methods执行完之后,把所有满足+load方法调用条件的类和分类分别存放在全局变量<strong>loadable_classes </strong>和<strong>loadable_categories</strong>中。</p>
+<p>在类和分类的数组之后,接下来对他们的+load方法进行调用了。打开文件<strong>objc-loadmethod.m</strong>类,中的<strong>call_load_methods</strong>函数。<br><img src="http://ozi3e5md5.bkt.clouddn.com/load2.png?attname=&amp;e=1510908389&amp;token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:0WSkAHw3OCvP73DmO3TmWqV-czQ" alt="Alt text"><br>下面的这个方法,就是最后调用+load方法<br><img src="http://ozi3e5md5.bkt.clouddn.com/load3.png?attname=&amp;e=1510908389&amp;token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:sMMFhtzR1e9-QgvLJMeEWNZur-8" alt="Alt text"></p>
+<p>+load项目中常使用 配合runtime 中的 <strong>Method Swizzling</strong>,下篇博客会讲</p>
+</blockquote>
+<hr>
+<h3 id="initialize"><a href="#initialize" class="headerlink" title="+initialize"></a>+initialize</h3><blockquote>
+<p>+initialize方法是在类或它的子类收到第一条消息之前被调用。(既实例方法或者类方法调用)。如果程序一直没有给某个类和它的子类发送消息,那么+initialize永远不会被调用。也就是<strong>懒加载</strong>。<br><strong>懒加载的好处,节省系统资源,避免浪费。</strong></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>在runtime的源码,加深对+initialize的理解:<br>打开文件 objc-runtime-new.mm,找到<strong>lookUpImpOrForward</strong>函数</p>
+</blockquote>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年11月17日 15:57</p>
+        <p>原始链接： <a class="post-url" href="/2017/11/17/Objective-C-load-vs-initialize/" title="Objective-C +load vs +initialize">http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/</a></p>
+        <footer>
+            <a href="http://yoursite.com">
+                <img src="/images/logo.png" alt="Mr Liu">
+                Mr Liu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/&title=《Objective-C +load vs +initialize》 — LL&pic=http://yoursite.comimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/&title=《Objective-C +load vs +initialize》 — LL&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Objective-C +load vs +initialize》 — LL&url=http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/&via=http://yoursite.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#load"><span class="post-toc-text">+load</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#initialize"><span class="post-toc-text">+initialize</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/11/14/Objective-C-Model/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Objective-C 对象模型</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 Mr Liu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>
