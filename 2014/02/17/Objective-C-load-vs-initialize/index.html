@@ -11,14 +11,14 @@
   <meta name="description" content="##Objective-C +load vs +initialize 雷纯锋大神博客原博客地址   上篇文章讲过的是Objective-C对象,在Objective-C中绝大部分的类都继承自NSObject类,在NSObject有两个特殊的类方法+load和initialize ,用于类的初始化。 1.子类、父类、分类中的相应方法什么时候会被调用？2.需不需要在子类的实现中显式地调用父类的实现？3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Objective-C +load vs +initialize">
-<meta property="og:url" content="http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/index.html">
+<meta property="og:url" content="http://yoursite.com/2014/02/17/Objective-C-load-vs-initialize/index.html">
 <meta property="og:site_name" content="LL">
 <meta property="og:description" content="##Objective-C +load vs +initialize 雷纯锋大神博客原博客地址   上篇文章讲过的是Objective-C对象,在Objective-C中绝大部分的类都继承自NSObject类,在NSObject有两个特殊的类方法+load和initialize ,用于类的初始化。 1.子类、父类、分类中的相应方法什么时候会被调用？2.需不需要在子类的实现中显式地调用父类的实现？3">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/load1.png?attname=&e=1510908389&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:_Vkc1RgheYAGzy5E43NlNR8YaNY">
 <meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/load2.png?attname=&e=1510908389&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:0WSkAHw3OCvP73DmO3TmWqV-czQ">
 <meta property="og:image" content="http://ozi3e5md5.bkt.clouddn.com/load3.png?attname=&e=1510908389&token=fiqYQpBTbTSE9zE8gijHLz4P3QAtpYczf_oNMNfp:sMMFhtzR1e9-QgvLJMeEWNZur-8">
-<meta property="og:updated_time" content="2017-11-17T07:57:39.857Z">
+<meta property="og:updated_time" content="2017-12-04T02:44:43.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C +load vs +initialize">
 <meta name="twitter:description" content="##Objective-C +load vs +initialize 雷纯锋大神博客原博客地址   上篇文章讲过的是Objective-C对象,在Objective-C中绝大部分的类都继承自NSObject类,在NSObject有两个特殊的类方法+load和initialize ,用于类的初始化。 1.子类、父类、分类中的相应方法什么时候会被调用？2.需不需要在子类的实现中显式地调用父类的实现？3">
@@ -126,7 +126,7 @@
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2017-11-17
+          <i class="fa fa-calendar"></i>  2014-02-17
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -172,8 +172,8 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2017年11月17日 15:57</p>
-        <p>原始链接： <a class="post-url" href="/2017/11/17/Objective-C-load-vs-initialize/" title="Objective-C +load vs +initialize">http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/</a></p>
+        <p>最后更新： 2017年12月04日 10:44</p>
+        <p>原始链接： <a class="post-url" href="/2014/02/17/Objective-C-load-vs-initialize/" title="Objective-C +load vs +initialize">http://yoursite.com/2014/02/17/Objective-C-load-vs-initialize/</a></p>
         <footer>
             <a href="http://yoursite.com">
                 <img src="/images/logo.png" alt="Mr Liu">
@@ -195,7 +195,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/&title=《Objective-C +load vs +initialize》 — LL&pic=http://yoursite.comimages/logo.png" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2014/02/17/Objective-C-load-vs-initialize/&title=《Objective-C +load vs +initialize》 — LL&pic=http://yoursite.comimages/logo.png" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -205,22 +205,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/&title=《Objective-C +load vs +initialize》 — LL&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2014/02/17/Objective-C-load-vs-initialize/&title=《Objective-C +load vs +initialize》 — LL&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2014/02/17/Objective-C-load-vs-initialize/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Objective-C +load vs +initialize》 — LL&url=http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/&via=http://yoursite.com" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Objective-C +load vs +initialize》 — LL&url=http://yoursite.com/2014/02/17/Objective-C-load-vs-initialize/&via=http://yoursite.com" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2014/02/17/Objective-C-load-vs-initialize/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -230,7 +230,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2017/11/17/Objective-C-load-vs-initialize/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2014/02/17/Objective-C-load-vs-initialize/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -255,8 +255,18 @@
 
 <nav id="article-nav">
   
+    <a href="/2015/01/04/产品经理-沟通/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          产品经理-沟通
+        
+      </span>
+    </a>
   
-    <a href="/2017/11/14/Objective-C-Model/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2013/02/04/Objective-C-Model/" id="article-nav-older" class="article-nav-link-wrap">
       <span class="article-nav-title">Objective-C 对象模型</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
